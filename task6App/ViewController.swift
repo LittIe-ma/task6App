@@ -15,14 +15,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        random()
+        setRandomNumbers()
     }
 
-    private func random() {
+    private func setRandomNumbers() {
 
-        for _ in 1...100 {
-            questionValue = Int.random(in: 1...100)
-        }
+        questionValue = Int.random(in: 1...100)
 
         questionLabel.text = "\(questionValue)"
 
@@ -33,7 +31,7 @@ class ViewController: UIViewController {
 
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-        alertController.addAction(UIAlertAction(title: "再挑戦", style: .default, handler: { action in self.random() }))
+        alertController.addAction(UIAlertAction(title: "再挑戦", style: .default, handler: { action in self.setRandomNumbers() }))
 
         present(alertController, animated: true)
     }
