@@ -15,10 +15,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setRandomNumbers()
+        setRandomNumber()
     }
 
-    private func setRandomNumbers() {
+    private func setRandomNumber() {
 
         questionValue = Int.random(in: 1...100)
 
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
 
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-        alertController.addAction(UIAlertAction(title: "再挑戦", style: .default, handler: { action in self.setRandomNumbers() }))
+        alertController.addAction(UIAlertAction(title: "再挑戦", style: .default, handler: { action in self.setRandomNumber() }))
 
         present(alertController, animated: true)
     }
