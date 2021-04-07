@@ -15,10 +15,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setRandomNumber()
+        resetGame()
     }
 
-    private func setRandomNumber() {
+    private func resetGame() {
 
         questionValue = Int.random(in: 1...100)
 
@@ -31,7 +31,7 @@ class ViewController: UIViewController {
 
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-        alertController.addAction(UIAlertAction(title: "再挑戦", style: .default, handler: { action in self.setRandomNumber() }))
+        alertController.addAction(UIAlertAction(title: "再挑戦", style: .default, handler: { [weak self] action in self?.resetGame() }))
 
         present(alertController, animated: true)
     }
@@ -40,11 +40,15 @@ class ViewController: UIViewController {
 
         let number = Int(slider.value)
 
+        let firstLine: String
+
         if questionValue == number {
-            alert(title: "結果", message: "当たり!\nあなたの値: \(number)")
+            firstLine = "当たり!"
         }else{
-            alert(title: "結果", message: "はずれ!\nあなたの値: \(number)")
+            firstLine = "はずれ!"
         }
+
+        alert(title: "結果", message: "\(firstLine)\nあなたの値: \(number)")
     }
 }
 
